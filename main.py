@@ -13,25 +13,25 @@ tempo_lavagem = ctrl.Consequent(np.arange(0, 121, 1), 'tempo_lavagem')  # Tempo 
 temperatura_agua = ctrl.Consequent(np.arange(0, 81, 1), 'temperatura_agua')  # Temperatura da água (0 a 80 °C)
 
 #Funções de pertinência
-nivel_sujeira['leve'] = fuzz.trapmf(nivel_sujeira.universe, [0, 0, 30, 50])  # Leve
-nivel_sujeira['moderada'] = fuzz.trapmf(nivel_sujeira.universe, [30, 50, 70, 90])  # Moderada
-nivel_sujeira['pesada'] = fuzz.trapmf(nivel_sujeira.universe, [70, 90, 100, 100])  # Pesada
+nivel_sujeira['leve'] = fuzz.trapmf(nivel_sujeira.universe, [0, 0, 30, 50])
+nivel_sujeira['moderada'] = fuzz.trapmf(nivel_sujeira.universe, [30, 50, 70, 90])
+nivel_sujeira['pesada'] = fuzz.trapmf(nivel_sujeira.universe, [70, 90, 100, 100])
 
-quantidade_louca['pouca'] = fuzz.gaussmf(quantidade_louca.universe, 2.5, 1.5)  # Pouca (centro em 2.5)
-quantidade_louca['moderada'] = fuzz.gaussmf(quantidade_louca.universe, 5, 1.5)  # Moderada (centro em 5)
-quantidade_louca['muita'] = fuzz.gaussmf(quantidade_louca.universe, 7.5, 1.5)  # Muita (centro em 7.5)
+quantidade_louca['pouca'] = fuzz.gaussmf(quantidade_louca.universe, 2.5, 1.5)
+quantidade_louca['moderada'] = fuzz.gaussmf(quantidade_louca.universe, 5, 1.5)
+quantidade_louca['muita'] = fuzz.gaussmf(quantidade_louca.universe, 7.5, 1.5)
 
-nivel_gordura['baixa'] = fuzz.trimf(nivel_gordura.universe, [0, 0, 50])  # Baixa gordura (0 a 50)
-nivel_gordura['media'] = fuzz.trimf(nivel_gordura.universe, [30, 50, 70])  # Média gordura (30 a 70)
-nivel_gordura['alta'] = fuzz.trimf(nivel_gordura.universe, [50, 100, 100])  # Alta gordura (50 a 100)
+nivel_gordura['baixa'] = fuzz.trimf(nivel_gordura.universe, [0, 0, 50])
+nivel_gordura['media'] = fuzz.trimf(nivel_gordura.universe, [30, 50, 70])
+nivel_gordura['alta'] = fuzz.trimf(nivel_gordura.universe, [50, 100, 100])
 
-tempo_lavagem['curto'] = fuzz.trimf(tempo_lavagem.universe, [0, 0, 60])  # Curto
-tempo_lavagem['medio'] = fuzz.trapmf(tempo_lavagem.universe, [30, 60, 90, 120])  # Médio
-tempo_lavagem['longo'] = fuzz.trimf(tempo_lavagem.universe, [90, 120, 120])  # Longo
+tempo_lavagem['curto'] = fuzz.trimf(tempo_lavagem.universe, [0, 0, 60])
+tempo_lavagem['medio'] = fuzz.trapmf(tempo_lavagem.universe, [30, 60, 90, 120])
+tempo_lavagem['longo'] = fuzz.trimf(tempo_lavagem.universe, [90, 120, 120])
 
-temperatura_agua['fria'] = fuzz.gaussmf(temperatura_agua.universe, 20, 10)  # Fria (centro em 20 °C)
-temperatura_agua['morna'] = fuzz.gaussmf(temperatura_agua.universe, 40, 10)  # Morna (centro em 40 °C)
-temperatura_agua['quente'] = fuzz.gaussmf(temperatura_agua.universe, 60, 10)  # Quente (centro em 60 °C)
+temperatura_agua['fria'] = fuzz.gaussmf(temperatura_agua.universe, 20, 10)
+temperatura_agua['morna'] = fuzz.gaussmf(temperatura_agua.universe, 40, 10)
+temperatura_agua['quente'] = fuzz.gaussmf(temperatura_agua.universe, 60, 10)
 
 # Visualização das funções de pertinência
 nivel_sujeira.view()
@@ -120,8 +120,8 @@ sistema = ctrl.ControlSystemSimulation(sistema_controle)
 
 # Entradas
 sistema.input['nivel_sujeira'] = 70  # Nível de sujeira (0 a 100)
-sistema.input['quantidade_louca'] = 8  # Quantidade de louça (0 a 10 kg)
-sistema.input['nivel_gordura'] = 60  # Nível de gordura (0 a 100)
+sistema.input['quantidade_louca'] = 2  # Quantidade de louça (0 a 10 kg)
+sistema.input['nivel_gordura'] = 40  # Nível de gordura (0 a 100)
 
 # Computação
 sistema.compute()
